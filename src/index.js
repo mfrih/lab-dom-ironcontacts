@@ -38,6 +38,7 @@ const threeContacts = contacts.splice(0, 3)
 addthreeContacts()
 
 function addthreeContacts(event) {
+  // the function declaration before doesn't seem to be mandatory. I don't  get it !!!!!
   threeContacts.forEach((element) => {
     const rowByContact = document.createElement("tr")
 
@@ -59,6 +60,9 @@ function addthreeContacts(event) {
   `
     const myDeleteButton = rowByContact.querySelector(".btn-delete")
     myDeleteButton.addEventListener("click", deleteContact)
+    const myLikeButton = rowByContact.querySelector(".btn-like")
+    myLikeButton.addEventListener("click", toggleFavorite)
+    console.log(myLikeButton)
     tableBody.append(rowByContact)
   })
 }
@@ -71,6 +75,15 @@ function deleteContact(event) {
 
 // ITERATION 3 - Like Buttons
 
+function toggleFavorite(event) {
+  const button = event.currentTarget
+  console.log(button)
+  if (button.classList.contains("selected")) {
+    button.classList.remove("selected")
+  } else {
+    button.classList.add("selected")
+  }
+}
 // Your code goes here ...
 
 // Bonus: ITERATION 4 - Add Random Contacts
